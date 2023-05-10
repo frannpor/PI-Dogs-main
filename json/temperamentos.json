@@ -1,0 +1,502 @@
+[
+    {
+        "id": 1,
+        "name": "Stubborn"
+    },
+    {
+        "id": 2,
+        "name": "Curious"
+    },
+    {
+        "id": 3,
+        "name": "Playful"
+    },
+    {
+        "id": 4,
+        "name": "Adventurous"
+    },
+    {
+        "id": 5,
+        "name": "Active"
+    },
+    {
+        "id": 6,
+        "name": "Aloof"
+    },
+    {
+        "id": 7,
+        "name": "Clownish"
+    },
+    {
+        "id": 8,
+        "name": "Fun-loving"
+    },
+    {
+        "id": 9,
+        "name": "Dignified"
+    },
+    {
+        "id": 10,
+        "name": "Independent"
+    },
+    {
+        "id": 11,
+        "name": "Dutiful"
+    },
+    {
+        "id": 12,
+        "name": "Happy"
+    },
+    {
+        "id": 13,
+        "name": "Outgoing"
+    },
+    {
+        "id": 14,
+        "name": "Friendly"
+    },
+    {
+        "id": 15,
+        "name": "Wild"
+    },
+    {
+        "id": 16,
+        "name": "Hardworking"
+    },
+    {
+        "id": 17,
+        "name": "Alert"
+    },
+    {
+        "id": 18,
+        "name": "Confident"
+    },
+    {
+        "id": 19,
+        "name": "Intelligent"
+    },
+    {
+        "id": 20,
+        "name": "Courageous"
+    },
+    {
+        "id": 21,
+        "name": "Loyal"
+    },
+    {
+        "id": 22,
+        "name": "Intelligent"
+    },
+    {
+        "id": 23,
+        "name": "Brave"
+    },
+    {
+        "id": 24,
+        "name": "Docile"
+    },
+    {
+        "id": 25,
+        "name": "Responsive"
+    },
+    {
+        "id": 26,
+        "name": "Composed"
+    },
+    {
+        "id": 27,
+        "name": "Receptive"
+    },
+    {
+        "id": 28,
+        "name": "Faithful"
+    },
+    {
+        "id": 29,
+        "name": "Loving"
+    },
+    {
+        "id": 30,
+        "name": "Protective"
+    },
+    {
+        "id": 31,
+        "name": "Trainable"
+    },
+    {
+        "id": 32,
+        "name": "Responsible"
+    },
+    {
+        "id": 33,
+        "name": "Energetic"
+    },
+    {
+        "id": 34,
+        "name": "Gentle"
+    },
+    {
+        "id": 35,
+        "name": "Affectionate"
+    },
+    {
+        "id": 36,
+        "name": "Devoted"
+    },
+    {
+        "id": 37,
+        "name": "Assertive"
+    },
+    {
+        "id": 38,
+        "name": "Dominant"
+    },
+    {
+        "id": 39,
+        "name": "Strong Willed"
+    },
+    {
+        "id": 40,
+        "name": "Obedient"
+    },
+    {
+        "id": 41,
+        "name": "Reserved"
+    },
+    {
+        "id": 42,
+        "name": "Kind"
+    },
+    {
+        "id": 43,
+        "name": "Sweet-Tempered"
+    },
+    {
+        "id": 44,
+        "name": "Tenacious"
+    },
+    {
+        "id": 45,
+        "name": "Attentive"
+    },
+    {
+        "id": 46,
+        "name": "Steady"
+    },
+    {
+        "id": 47,
+        "name": "Bold"
+    },
+    {
+        "id": 48,
+        "name": "Proud"
+    },
+    {
+        "id": 49,
+        "name": "Reliable"
+    },
+    {
+        "id": 50,
+        "name": "Fearless"
+    },
+    {
+        "id": 51,
+        "name": "Lively"
+    },
+    {
+        "id": 52,
+        "name": "Self-assured"
+    },
+    {
+        "id": 53,
+        "name": "Cautious"
+    },
+    {
+        "id": 54,
+        "name": "Eager"
+    },
+    {
+        "id": 55,
+        "name": "Good-natured"
+    },
+    {
+        "id": 56,
+        "name": "Spirited"
+    },
+    {
+        "id": 57,
+        "name": "Companionable"
+    },
+    {
+        "id": 58,
+        "name": "Even Tempered"
+    },
+    {
+        "id": 59,
+        "name": "Rugged"
+    },
+    {
+        "id": 60,
+        "name": "Fierce"
+    },
+    {
+        "id": 61,
+        "name": "Refined"
+    },
+    {
+        "id": 62,
+        "name": "Joyful"
+    },
+    {
+        "id": 63,
+        "name": "Agile"
+    },
+    {
+        "id": 64,
+        "name": "Amiable"
+    },
+    {
+        "id": 65,
+        "name": "Excitable"
+    },
+    {
+        "id": 66,
+        "name": "Determined"
+    },
+    {
+        "id": 67,
+        "name": "Self-confidence"
+    },
+    {
+        "id": 68,
+        "name": "Hardy"
+    },
+    {
+        "id": 69,
+        "name": "Calm"
+    },
+    {
+        "id": 70,
+        "name": "Good-tempered"
+    },
+    {
+        "id": 71,
+        "name": "Watchful"
+    },
+    {
+        "id": 72,
+        "name": "Hard-working"
+    },
+    {
+        "id": 73,
+        "name": "Feisty"
+    },
+    {
+        "id": 74,
+        "name": "Cheerful"
+    },
+    {
+        "id": 75,
+        "name": "Sensitive"
+    },
+    {
+        "id": 76,
+        "name": "Easygoing"
+    },
+    {
+        "id": 77,
+        "name": "Adaptable"
+    },
+    {
+        "id": 78,
+        "name": "Trusting"
+    },
+    {
+        "id": 79,
+        "name": "Lovable"
+    },
+    {
+        "id": 80,
+        "name": "Territorial"
+    },
+    {
+        "id": 81,
+        "name": "Keen"
+    },
+    {
+        "id": 82,
+        "name": "Familial"
+    },
+    {
+        "id": 83,
+        "name": "Rational"
+    },
+    {
+        "id": 84,
+        "name": "Bright"
+    },
+    {
+        "id": 85,
+        "name": "Quick"
+    },
+    {
+        "id": 86,
+        "name": "Powerful"
+    },
+    {
+        "id": 87,
+        "name": "Gay"
+    },
+    {
+        "id": 88,
+        "name": "Stable"
+    },
+    {
+        "id": 89,
+        "name": "Quiet"
+    },
+    {
+        "id": 90,
+        "name": "Inquisitive"
+    },
+    {
+        "id": 91,
+        "name": "Strong"
+    },
+    {
+        "id": 92,
+        "name": "Sociable"
+    },
+    {
+        "id": 93,
+        "name": "Patient"
+    },
+    {
+        "id": 94,
+        "name": "Suspicious"
+    },
+    {
+        "id": 95,
+        "name": "Great-hearted"
+    },
+    {
+        "id": 96,
+        "name": "Merry"
+    },
+    {
+        "id": 97,
+        "name": "Vocal"
+    },
+    {
+        "id": 98,
+        "name": "Tolerant"
+    },
+    {
+        "id": 99,
+        "name": "Mischievous"
+    },
+    {
+        "id": 100,
+        "name": "People-Oriented"
+    },
+    {
+        "id": 101,
+        "name": "Bossy"
+    },
+    {
+        "id": 102,
+        "name": "Cunning"
+    },
+    {
+        "id": 103,
+        "name": "Athletic"
+    },
+    {
+        "id": 104,
+        "name": "Boisterous"
+    },
+    {
+        "id": 105,
+        "name": "Cooperative"
+    },
+    {
+        "id": 106,
+        "name": "Trustworthy"
+    },
+    {
+        "id": 107,
+        "name": "Self-important"
+    },
+    {
+        "id": 108,
+        "name": "Respectful"
+    },
+    {
+        "id": 109,
+        "name": "Thoughtful"
+    },
+    {
+        "id": 110,
+        "name": "Generous"
+    },
+    {
+        "id": 111,
+        "name": "Cat-like"
+    },
+    {
+        "id": 112,
+        "name": "Sturdy"
+    },
+    {
+        "id": 113,
+        "name": "Benevolent"
+    },
+    {
+        "id": 114,
+        "name": "Clever"
+    },
+    {
+        "id": 115,
+        "name": "Bubbly"
+    },
+    {
+        "id": 116,
+        "name": "Opinionated"
+    },
+    {
+        "id": 117,
+        "name": "Aggressive"
+    },
+    {
+        "id": 118,
+        "name": "Extroverted"
+    },
+    {
+        "id": 119,
+        "name": "Charming"
+    },
+    {
+        "id": 120,
+        "name": "Unflappable"
+    },
+    {
+        "id": 121,
+        "name": "Spunky"
+    },
+    {
+        "id": 122,
+        "name": "Diligent"
+    },
+    {
+        "id": 123,
+        "name": "Willful"
+    },
+    {
+        "id": 124,
+        "name": "Fast"
+    },
+    {
+        "id": 125,
+        "name": "Vigilant"
+    }
+]
