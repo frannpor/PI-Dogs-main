@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.card {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.card h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.card input,
+.card select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.card ul {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.card button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card p {
+  color: red;
+  margin-top: 5px;
+}
+
+.card .dogImage {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card .dogImage img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    width: 90%;
+  }
+}

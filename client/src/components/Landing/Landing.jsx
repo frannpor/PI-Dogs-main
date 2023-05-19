@@ -1,15 +1,16 @@
-import dog_image from "../../../src/Extras/dog-landing.png";
 import { Link } from "react-router-dom";
+import style from "../Landing/Landing.module.css";
 
 const Landing = () => {
   return (
-    <div>
-      <img src={dog_image} alt="landing_dog" />
-      <Link to="/home">
-        <hr />
-        <h1>Welcome to the website</h1>
-        <button>Enter</button>
-      </Link>
+    <div className={style.container}>
+      <div className={style.overlay}></div>
+      <div className={style.content}>
+        <h1 className={style.title}>Welcome to the dog website</h1>
+        <Link to="/home" className={style.link}>
+          <button className={style.button}>Enter</button>
+        </Link>
+      </div>
     </div>
   );
 };

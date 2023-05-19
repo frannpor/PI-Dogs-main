@@ -2,7 +2,7 @@ const { Dog, Temperament } = require('../db.js');
 const { Op } = require('sequelize');
 const { getAllTemps } = require('./getAllTemps');
 
-const postDogs = async (name, height, weight, age, image, temperament) => {
+const postDogs = async (name, height, weight, age, image, temperament, createInDb) => {
     //* Buscamoos si ya existe un perro con el mismo nombre en la base de datos usando
     //* el operador Op.iLike para buscar sin importar mayúsculas o minúsculas
     const dbResponse = await Dog.findAll({
@@ -12,6 +12,7 @@ const postDogs = async (name, height, weight, age, image, temperament) => {
             },
         },
     });
+    console.log(dbResponse);
     if (dbResponse.length) throw new Error("There is already a dog with that name");
     //* Si la base de datos ya tiene un perro con ese nombre devuelve un mensaje
     //* Si no existe un perro con ese nombre, crea uno nuevo en la base de datos
@@ -21,6 +22,7 @@ const postDogs = async (name, height, weight, age, image, temperament) => {
         weight: weight,
         age: age,
         image: image,
+        createInDb: true,
     });
     //* Verifico si la tabla de temperamentos esté cargada usando count(), de no estar cargada, la creamos
     //* invocando a getAllTemps

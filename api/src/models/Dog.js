@@ -28,6 +28,11 @@ module.exports = (sequelize) => {
     age: {
       type: DataTypes.STRING,
     },
+    createInDb: { //* Crear esta propiedad para luego usarla en los filtros
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
   },
     { timestamps: false });
 
