@@ -1,3 +1,4 @@
 [build]
+  base = "PI-Dogs-main"
   command = "cd client && npm run build"
   publish = "client/build"
