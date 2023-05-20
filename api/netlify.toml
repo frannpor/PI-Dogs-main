@@ -1,0 +1,3 @@
+[build]
+  command = "cd api && npm run build"
+  publish = "api"
