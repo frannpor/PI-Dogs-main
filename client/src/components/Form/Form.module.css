@@ -1,70 +1,103 @@
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-  background-color: #f5f5f5;
+  overflow: hidden;
+  margin-bottom: -20px;
 }
 
-.card {
+.backgroundImage {
+  flex: 1;
+  background-image: url('../../../src/Extras/dog-form.png'); 
+  background-size: cover;
+  background-position: center;
+  padding-left: 20em;
+}
+
+.formContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
   width: 400px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 8px;
   padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.card h1 {
-  text-align: center;
+.title {
+  font-size: 24px;
   margin-bottom: 20px;
 }
 
-.card label {
-  display: block;
-  margin-bottom: 5px;
+.field {
+  margin-bottom: 16px;
+  padding: 15px;
+  position: relative;
 }
 
-.card input,
-.card select {
+.label {
+  font-weight: bold;
+}
+
+.input {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  border-radius: 4px;
 }
 
-.card ul {
-  padding-left: 20px;
-  margin-bottom: 10px;
+.error {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 97%;
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+  position: absolute;
 }
 
-.card button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 8px 16px;
+.select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.selectedTemps {
+  display: flex;
+  flex-wrap: wrap; 
+  max-width: 100%; 
+  margin-top: 8px;
+}
+
+.selectedTemp {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.removeButton {
+  margin-left: 8px;
+  padding: 4px;
   border: none;
-  border-radius: 5px;
+  background-color: transparent;
+  color: red;
   cursor: pointer;
 }
 
-.card p {
-  color: red;
-  margin-top: 5px;
-}
-
-.card .dogImage {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.card .dogImage img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
-@media screen and (max-width: 480px) {
-  .card {
-    width: 90%;
-  }
+.createButton {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
 }

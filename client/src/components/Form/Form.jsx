@@ -45,14 +45,57 @@ const Form = () => {
         [name]: value,
       }));
     }
-    setErrors(
-      validate({
-        ...input,
-        [name]: value,
-      })
-    );
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: validateField(name, value), // Función para validar un campo específico
+    }));
   };
+  const validateField = (name, value) => {
+    let error = "";
 
+    switch (name) {
+      case "name":
+        if (!value.trim()) {
+          error = "El nombre de la raza es obligatorio";
+        }
+        break;
+      case "height":
+        if (!value.trim()) {
+          error = "La altura es obligatoria";
+        } else if (!/^(\d{2})\s-\s(\d{2})$/.test(value)) {
+          error =
+            "Formato de altura inválido. Utiliza 'número - número' (por ejemplo, '20 - 110')";
+        }
+        break;
+      case "weight":
+        if (!value.trim()) {
+          error = "El peso es obligatorio";
+        } else if (!/^(\d{2})\s-\s(\d{2})$/.test(value)) {
+          error =
+            "Formato de peso inválido. Utiliza 'número - número' (por ejemplo, '2 - 90')";
+        }
+        break;
+      case "age":
+        if (!value.trim()) {
+          error = "La edad es obligatoria";
+        } else if (!/^(\d{2})\s-\s(\d{2})$/.test(value)) {
+          error =
+            "Formato de edad inválido. Utiliza 'número - número' (por ejemplo, '8 - 20')";
+        }
+        break;
+      case "image":
+        if (!value.trim()) {
+          error = "La URL de la imagen es obligatoria";
+        } else if (!/^https?:\/\/\S+$/.test(value)) {
+          error = "URL de imagen inválida";
+        }
+        break;
+      default:
+        break;
+    }
+
+    return error;
+  };
   const handleSelect = (event) => {
     const selectedTemperament = event.target.value;
     setInput((prevInput) => ({
@@ -85,83 +128,103 @@ const Form = () => {
   };
   return (
     <div className={styles.container}>
-      <div className={`${styles.card} ${styles.Form}`}>
-        <form onSubmit={handleSubmit}>
-          <div className={styles.Form}>
-            <h1 className={styles.FormTitle}>Crea tu propia raza!</h1>
-            <div className={styles.FormText}>
-              <label>Breed:</label>
+      <div className={styles.backgroundImage}></div>
+      <div className={styles.formContainer}>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <div>
+            <h1 className={styles.title}>Crea tu propia raza!</h1>
+            <div className={styles.field}>
+              <label className={styles.label}>Breed:</label>
               <input
                 type="text"
                 value={input.name}
                 name="name"
                 onChange={handleChange}
+                className={styles.input}
               />
-              {errors.name && <p>{errors.name}</p>}
-              <br />
-              <label className={styles.leftAlignText}>Height:</label>
+              {errors.name && <p className={styles.error}>{errors.name}</p>}
+            </div>
+            <div className={styles.field}>
+              <label className={styles.label}>Height:</label>
               <input
                 type="text"
                 value={input.height}
                 name="height"
                 onChange={handleChange}
+                className={styles.input}
               />
-              {errors.height && <p>{errors.height}</p>}
-              <br />
-              <label>Weight:</label>
+              {errors.height && <p className={styles.error}>{errors.height}</p>}
+            </div>
+            <div className={styles.field}>
+              <label className={styles.label}>Weight:</label>
               <input
                 type="text"
                 value={input.weight}
                 name="weight"
                 onChange={handleChange}
+                className={styles.input}
               />
-              {errors.weight && <p>{errors.weight}</p>}
-              <br />
-              <label>Age:</label>
+              {errors.weight && <p className={styles.error}>{errors.weight}</p>}
+            </div>
+            <div className={styles.field}>
+              <label className={styles.label}>Age:</label>
               <input
                 type="text"
                 value={input.age}
                 name="age"
                 onChange={handleChange}
+                className={styles.input}
               />
-              {errors.age && <p>{errors.age}</p>}
-              <br />
-              <label>Image:</label>
+              {errors.age && <p className={styles.error}>{errors.age}</p>}
+            </div>
+            <div className={styles.field}>
+              <label className={styles.label}>Image:</label>
               <input
                 type="text"
                 value={input.image}
                 name="image"
                 onChange={handleChange}
+                className={styles.input}
               />
-              {errors.image && <p>{errors.image}</p>}
-              <br />
-              <label htmlFor="temperament">Temperament:</label>
-              {errors.temperaments && <p>{errors.temperaments}</p>}
-              <select id="temperaments" onChange={handleSelect}>
+              {errors.image && <p className={styles.error}>{errors.image}</p>}
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="temperament" className={styles.label}>
+                Temperament:
+              </label>
+              {errors.temperaments && (
+                <p className={styles.error}>{errors.temperaments}</p>
+              )}
+              <select
+                id="temperaments"
+                onChange={handleSelect}
+                className={styles.select}
+              >
                 <option value="">Seleccionar</option>
-                {filteredTemps?.map((temp) => (
+                {filteredTemps?.sort().map((temp) => (
                   <option key={temp} value={temp}>
                     {temp}
                   </option>
                 ))}
               </select>
-              <ul>
+              <div className={styles.selectedTemps}>
                 {selectedTemps?.map((temp) => (
-                  <div key={temp?.id}>
-                    <li>
-                      {temp}
-                      {""}{" "}
-                      <button type="button" onClick={() => handleRemove(temp)}>
-                        x
-                      </button>
-                    </li>
+                  <div key={temp?.id} className={styles.selectedTemp}>
+                    <span>{temp}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleRemove(temp)}
+                      className={styles.removeButton}
+                    >
+                      x
+                    </button>
                   </div>
                 ))}
-              </ul>
-              <button className={styles.SaveButton} type="submit">
-                Crear
-              </button>
+              </div>
             </div>
+            <button type="submit" className={styles.createButton}>
+              Crear
+            </button>
           </div>
         </form>
       </div>

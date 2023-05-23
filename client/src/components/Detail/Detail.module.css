@@ -1,0 +1,41 @@
+.contentContainer {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    margin: 50px auto;
+    width: 50%;
+}
+
+.titleName {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image {
+  width: 600px;
+  height: auto;
+}
+
+.contentContainer:hover {
+  transform: translateY(-10px);
+}
+
+.temperaments {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.info {
+  font-size: 18px;
+  margin-bottom: 10px;
+}

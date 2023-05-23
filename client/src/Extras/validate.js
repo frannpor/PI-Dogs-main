@@ -1,38 +1,36 @@
-//! Sujeto a cambios
-
 export const validate = (input) => {
     let errors = {};
 
     if (!input.name.trim()) {
-        errors.name = "Breed name is required";
+        errors.name = "El nombre de la raza es obligatorio";
     }
 
     if (!input.height.trim()) {
-        errors.height = "Height is required";
+        errors.height = "La altura es obligatoria";
     } else if (!/^(\d{2})\s-\s(\d{2})$/.test(input.height)) {
-        errors.height = "Invalid height format. Use 'number - number' (e.g., '20 - 110')";
+        errors.height = "Formato de altura inválido. Utiliza 'número - número' (por ejemplo, '20 - 110')";
     }
 
     if (!input.weight.trim()) {
-        errors.weight = "Weight is required";
+        errors.weight = "El peso es obligatorio";
     } else if (!/^(\d{2})\s-\s(\d{2})$/.test(input.weight)) {
-        errors.weight = "Invalid weight format. Use 'number - number' (e.g., '2 - 90')";
+        errors.weight = "Formato de peso inválido. Utiliza 'número - número' (por ejemplo, '2 - 90')";
     }
 
     if (!input.age.trim()) {
-        errors.age = "Age is required";
+        errors.age = "La edad es obligatoria";
     } else if (!/^(\d{2})\s-\s(\d{2})$/.test(input.age)) {
-        errors.age = "Invalid age format. Use 'number - number' (e.g., '8 - 20')";
+        errors.age = "Formato de edad inválido. Utiliza 'número - número' (por ejemplo, '8 - 20')";
     }
 
     if (!input.image.trim()) {
-        errors.image = "Image URL is required";
+        errors.image = "La URL de la imagen es obligatoria";
     } else if (!/^https?:\/\/\S+$/.test(input.image)) {
-        errors.image = "Invalid image URL";
+        errors.image = "URL de imagen inválida";
     }
 
     if (input.temperaments.length === 0) {
-        errors.temperaments = "At least one temperament is required";
+        errors.temperaments = "Se requiere al menos un temperamento";
     }
 
     return errors;

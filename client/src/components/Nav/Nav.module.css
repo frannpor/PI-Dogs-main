@@ -1,0 +1,26 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f3bcb4;
+}
+.link {
+  font-size: 16px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  border: none;
+  margin-left: 2em;
+  border-radius: 5px;
+  color: #ffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.link:hover {
+  background-color: #0044ff;
+}
+
+.title {
+  font-size: 36px;
+  margin-bottom: 20px;
+}

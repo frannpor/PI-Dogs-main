@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   margin-top: 16px;
+  background-color: #f3bcb4;
+  margin-bottom: -20px;
 }
 
 .PageNumbers {
@@ -11,19 +13,20 @@
 }
 
 .PageNumber {
-  background-color: #e91e63;
+  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 4px;
   padding: 8px 16px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   margin-right: 4px;
   transition: background-color 0.3s;
 }
 
+
 .PageNumber:hover {
-  background-color: #c2185b;
+  background-color: #0044ff;
 }
 
 .PageNumber:focus {

@@ -1,9 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogs, getByName, FilterByTemperament, getTemperaments, FilterByWeight, FilterByHeight, FilterByOrigin, FilterByName } from "../../redux/actions/actions";
-import { Link } from "react-router-dom";
-import SearchBar from "../SearchBar/SearchBar.jsx";
+import {
+  getDogs,
+  FilterByTemperament,
+  getTemperaments,
+  FilterByWeight,
+  FilterByHeight,
+  FilterByOrigin,
+  FilterByName,
+} from "../../redux/actions/actions";
 import Pagination from "../Pagination/Pagination";
 import Dogs from "../Dogs/Dogs";
 import styles from "../Home/Home.module.css";
@@ -14,11 +20,11 @@ const Home = () => {
   const tempState = useSelector((state) => state.temperaments);
   const handleClick = (event) => {
     event.preventDefault();
+    setCurrentPage(1);
     dispatch(getDogs());
   };
 
- //? Paginate
-
+  //? Paginado
   const [currentPage, setCurrentPage] = useState(1); //* Página actual, comienza en 1
   const [dogsPerPage] = useState(8); //* Cantidad de perros por página
 
@@ -29,125 +35,138 @@ const Home = () => {
   const pagination = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+  const resetPagination = () => {
+    setCurrentPage(1);
+  };
 
   useEffect(() => {
     dispatch(getDogs());
     dispatch(getTemperaments());
   }, [dispatch]);
 
-  const handleSearch = (search) => {
-    //* Función para que sea pasada por prop a la SearchBar y setear el numbero de page
-    dispatch(getByName(search)).then(() => {
-      setCurrentPage(1);
-    });
-  };
-
   const handleFilterByTemperament = (event) => {
     event.preventDefault();
+    resetPagination();
     dispatch(FilterByTemperament(event.target.value));
   };
 
   const handleFilterByWeight = (event) => {
     event.preventDefault();
+    resetPagination();
     dispatch(FilterByWeight(event.target.value));
   };
 
   const handleFilterByHeight = (event) => {
     event.preventDefault();
+    resetPagination();
     dispatch(FilterByHeight(event.target.value));
   };
 
   const handleFilteredByOrigin = (event) => {
     event.preventDefault();
+    resetPagination();
     dispatch(FilterByOrigin(event.target.value));
   };
 
   const handleFilterByName = (event) => {
     event.preventDefault();
+    resetPagination();
     dispatch(FilterByName(event.target.value));
   };
 
   return (
-    <div className={styles.Container}>
-      <Link to="/form" className={styles.Link}>
-        Crear un nuevo perro
-      </Link>
-      <SearchBar onSearch={handleSearch} />
-      <h1 className={styles.Title}>¡Bienvenido a Dog World!</h1>
-      <button className={styles.Button} onClick={(event) => handleClick(event)}>
+    <div className={styles.homeAll}>
+      <h1 className={styles.title}>¡Bienvenido a Dog World!</h1>
+      <button
+        className={styles.reloadButton}
+        onClick={(event) => handleClick(event)}
+      >
         Cargar perros de nuevo
       </button>
-      <div className={styles.SelectContainer}>
-        <h3>Filtrar por:</h3>
-        <select
-          onChange={(event) => handleFilterByName(event)}
-          className={styles.Select}
-          defaultValue="Name"
-        >
-          <option value="Asc">Ascendente</option>
-          <option value="Dec">Descendente</option>
-        </select>
-        <select
-          onChange={(event) => handleFilterByWeight(event)}
-          className={styles.Select}
-          defaultValue="Weight"
-        >
-          <option value="max">Peso Max-Min</option>
-          <option value="min">Peso Min-Max</option>
-        </select>
-        <select
-          onChange={(event) => handleFilterByHeight(event)}
-          className={styles.Select}
-          defaultValue="Height"
-        >
-          <option value="max">Max-Min</option>
-          <option value="min">Min-Max</option>
-        </select>
-        <select
-          onChange={(event) => handleFilteredByOrigin(event)}
-          className={styles.Select}
-          defaultValue="Dogs"
-        >
-          <option value="all">Todos</option>
-          <option value="api">Existente</option>
-          <option value="created">Creado</option>
-        </select>
-        <select
-          onChange={(event) => handleFilterByTemperament(event)}
-          className={styles.Select}
-          defaultValue="Temperaments"
-        >
-          <option value="All">Todos los temperamentos</option>
-          {tempState?.map((temp) => (
-            <option key={temp} value={temp}>
-              {temp}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className={styles.DogsContainer}>
-        <div className={styles.Dogs}>
-          {currentDogs?.map((dog) => (
-            <Dogs
-              key={dog.id}
-              id={dog.id}
-              name={dog.name}
-              image={dog.image}
-              weight={dog.weight}
-              height={dog.height}
-              temperaments={dog.temperaments}
-              temperament={dog.temperament}
-              createInDb={dog.createInDb}
-            />
-          ))}
+      <div className={styles.filterContainer}>
+        <h3 className={styles.filterTitle}>Ordenar y filtrar:</h3>
+        <div className={styles.selectContainer}>
+          <label className={styles.filterLabel}>Alfabéticamente:</label>
+          <select
+            className={styles.filterSelect}
+            onChange={(event) => handleFilterByName(event)}
+            defaultValue="Name"
+          >
+            <option value="Asc">Ascendente</option>
+            <option value="Dec">Descendente</option>
+          </select>
         </div>
-        <Pagination
-          dogs={allDogs.length}
-          dogsPerPage={dogsPerPage}
-          currentPage={currentPage}
-          pagination={pagination}
-        />
+        <div className={styles.selectContainer}>
+          <label className={styles.filterLabel}>Peso:</label>
+          <select
+            className={styles.filterSelect}
+            onChange={(event) => handleFilterByWeight(event)}
+            defaultValue="Weight"
+          >
+            <option value="max">Peso Max-Min</option>
+            <option value="min">Peso Min-Max</option>
+          </select>
+        </div>
+        <div className={styles.selectContainer}>
+          <label className={styles.filterLabel}>Altura:</label>
+          <select
+            className={styles.filterSelect}
+            onChange={(event) => handleFilterByHeight(event)}
+            defaultValue="Height"
+          >
+            <option value="max">Max-Min</option>
+            <option value="min">Min-Max</option>
+          </select>
+        </div>
+        <div className={styles.selectContainer}>
+          <label className={styles.filterLabel}>Origen:</label>
+          <select
+            className={styles.filterSelect}
+            onChange={(event) => handleFilteredByOrigin(event)}
+            defaultValue="Dogs"
+          >
+            <option value="all">Todos</option>
+            <option value="api">Existente</option>
+            <option value="created">Creado</option>
+          </select>
+        </div>
+        <div className={styles.selectContainer}>
+          <label className={styles.filterLabel}>Temperamento:</label>
+          <select
+            className={styles.filterSelect}
+            onChange={(event) => handleFilterByTemperament(event)}
+            defaultValue="Temperaments"
+          >
+            <option value="All">Todos los temperamentos</option>
+            {tempState?.sort().map((temp) => (
+              <option key={temp} value={temp}>
+                {temp}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
+      <div className={styles.dogsContainer}>
+        {currentDogs?.map((dog) => (
+          <Dogs
+            key={dog.id}
+            id={dog.id}
+            name={dog.name}
+            image={dog.image}
+            weight={dog.weight}
+            height={dog.height}
+            temperaments={dog.temperaments}
+            temperament={dog.temperament}
+            createInDb={dog.createInDb}
+          />
+        ))}
+      </div>
+      <Pagination
+        dogs={allDogs.length}
+        dogsPerPage={dogsPerPage}
+        currentPage={currentPage}
+        pagination={pagination}
+      />
     </div>
   );
 };
