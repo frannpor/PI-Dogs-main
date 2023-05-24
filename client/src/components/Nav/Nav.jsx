@@ -1,16 +1,13 @@
-import SearchBar from "../SearchBar/SearchBar";
 import React from "react";
-import { Link } from "react-router-dom";
-import { getByName } from "../../redux/actions/actions";
-import { useDispatch } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import styles from "./Nav.module.css";
 
 const Nav = () => {
-  const dispatch = useDispatch();
-  const handleSearch = (search) => {
-    dispatch(getByName(search));
+  const history = useHistory();
+  const handleRedirect = () => {
+    history.push("/home");
+    window.location.reload()
   };
-
   return (
     <nav className={styles.nav}>
       <div>
@@ -18,14 +15,13 @@ const Nav = () => {
           <button className={styles.link}>Landing</button>
         </Link>
         <Link to="/home">
-          <button className={styles.link}>Home</button>
+          <button className={styles.link} onClick={handleRedirect}>
+            Home
+          </button>
         </Link>
         <Link to="/form">
           <button className={styles.link}>Crear un nuevo perro</button>
         </Link>
-      </div>
-      <div className={styles.SearchBar}>
-        <SearchBar onSearch={handleSearch} />
       </div>
     </nav>
   );

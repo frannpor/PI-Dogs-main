@@ -1,28 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getDogs,
-  FilterByTemperament,
-  getTemperaments,
-  FilterByWeight,
-  FilterByHeight,
-  FilterByOrigin,
-  FilterByName,
-} from "../../redux/actions/actions";
+import { getDogs, FilterByTemperament, getTemperaments, getByName, FilterByWeight, FilterByHeight, FilterByOrigin, FilterByName } from "../../redux/actions/actions";
 import Pagination from "../Pagination/Pagination";
 import Dogs from "../Dogs/Dogs";
+import SearchBar from "../SearchBar/SearchBar";
 import styles from "../Home/Home.module.css";
 
 const Home = () => {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.dogs);
   const tempState = useSelector((state) => state.temperaments);
-  const handleClick = (event) => {
-    event.preventDefault();
-    setCurrentPage(1);
-    dispatch(getDogs());
-  };
 
   //? Paginado
   const [currentPage, setCurrentPage] = useState(1); //* Página actual, comienza en 1
@@ -43,6 +31,14 @@ const Home = () => {
     dispatch(getDogs());
     dispatch(getTemperaments());
   }, [dispatch]);
+
+  const handleClick = (event) => {
+    //? Cargar perros de nuevo
+    event.preventDefault();
+    resetPagination();
+    dispatch(getDogs());
+    window.location.reload()
+  };
 
   const handleFilterByTemperament = (event) => {
     event.preventDefault();
@@ -74,78 +70,93 @@ const Home = () => {
     dispatch(FilterByName(event.target.value));
   };
 
+  const handleSearch = (search) => {
+    resetPagination();
+    dispatch(getByName(search));
+  };
+
   return (
     <div className={styles.homeAll}>
-      <h1 className={styles.title}>¡Bienvenido a Dog World!</h1>
+      <div className={styles.filterContainer}>
+        <div className={styles.SearchBar}>
+          <SearchBar onSearch={handleSearch} />
+        </div>
+        <div className={styles.filterOption}>
+          <h3 className={styles.filterTitle}>Ordenar:</h3>
+          <div className={styles.selectContainer}>
+            <label className={styles.filterLabel}>Alfabéticamente:</label>
+            <select
+              className={styles.filterSelect}
+              onChange={(event) => handleFilterByName(event)}
+            >
+              <option value="">Seleccionar</option>
+              <option value="Asc">Ascendente</option>
+              <option value="Dec">Descendente</option>
+            </select>
+          </div>
+          <div className={styles.selectContainer}>
+            <label className={styles.filterLabel}>Peso:</label>
+            <select
+              className={styles.filterSelect}
+              onChange={(event) => handleFilterByWeight(event)}
+            >
+              <option value="">Seleccionar</option>
+              <option value="max">Peso Max-Min</option>
+              <option value="min">Peso Min-Max</option>
+            </select>
+          </div>
+          <div className={styles.selectContainer}>
+            <label className={styles.filterLabel}>Altura:</label>
+            <select
+              className={styles.filterSelect}
+              onChange={(event) => handleFilterByHeight(event)}
+            >
+              <option value="">Seleccionar</option>
+              <option value="max">Max-Min</option>
+              <option value="min">Min-Max</option>
+            </select>
+          </div>
+        </div>
+        <div className={styles.filterOption}>
+          <h3 className={styles.filterTitle}>Filtrar:</h3>
+          <div className={styles.selectContainer}>
+            <label className={styles.filterLabel}>Origen:</label>
+            <select
+              className={styles.filterSelect}
+              onChange={(event) => handleFilteredByOrigin(event)}
+            >
+              <option value="">Seleccionar</option>
+              <option value="all">Todos</option>
+              <option value="api">API</option>
+              <option value="created">Creado</option>
+            </select>
+          </div>
+          <div className={styles.selectContainer}>
+            <label className={styles.filterLabel}>Temperamento:</label>
+            <select
+              className={styles.filterSelect}
+              onChange={(event) => handleFilterByTemperament(event)}
+            >
+              <option value="">Seleccionar</option>
+              <option value="All">Todos los temperamentos</option>
+              {tempState?.sort().map((temp) => (
+                <option key={temp} value={temp}>
+                  {temp}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.title}>¡Bienvenido a Dog World!</h1>
+      </div>
       <button
         className={styles.reloadButton}
         onClick={(event) => handleClick(event)}
       >
         Cargar perros de nuevo
       </button>
-      <div className={styles.filterContainer}>
-        <h3 className={styles.filterTitle}>Ordenar y filtrar:</h3>
-        <div className={styles.selectContainer}>
-          <label className={styles.filterLabel}>Alfabéticamente:</label>
-          <select
-            className={styles.filterSelect}
-            onChange={(event) => handleFilterByName(event)}
-            defaultValue="Name"
-          >
-            <option value="Asc">Ascendente</option>
-            <option value="Dec">Descendente</option>
-          </select>
-        </div>
-        <div className={styles.selectContainer}>
-          <label className={styles.filterLabel}>Peso:</label>
-          <select
-            className={styles.filterSelect}
-            onChange={(event) => handleFilterByWeight(event)}
-            defaultValue="Weight"
-          >
-            <option value="max">Peso Max-Min</option>
-            <option value="min">Peso Min-Max</option>
-          </select>
-        </div>
-        <div className={styles.selectContainer}>
-          <label className={styles.filterLabel}>Altura:</label>
-          <select
-            className={styles.filterSelect}
-            onChange={(event) => handleFilterByHeight(event)}
-            defaultValue="Height"
-          >
-            <option value="max">Max-Min</option>
-            <option value="min">Min-Max</option>
-          </select>
-        </div>
-        <div className={styles.selectContainer}>
-          <label className={styles.filterLabel}>Origen:</label>
-          <select
-            className={styles.filterSelect}
-            onChange={(event) => handleFilteredByOrigin(event)}
-            defaultValue="Dogs"
-          >
-            <option value="all">Todos</option>
-            <option value="api">Existente</option>
-            <option value="created">Creado</option>
-          </select>
-        </div>
-        <div className={styles.selectContainer}>
-          <label className={styles.filterLabel}>Temperamento:</label>
-          <select
-            className={styles.filterSelect}
-            onChange={(event) => handleFilterByTemperament(event)}
-            defaultValue="Temperaments"
-          >
-            <option value="All">Todos los temperamentos</option>
-            {tempState?.sort().map((temp) => (
-              <option key={temp} value={temp}>
-                {temp}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
       <div className={styles.dogsContainer}>
         {currentDogs?.map((dog) => (
           <Dogs

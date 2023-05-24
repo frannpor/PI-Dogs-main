@@ -1,60 +1,14 @@
 .homeAll {
-  justify-items: center;
-  align-items: start;
   background-image: url("../../../src/Extras/background.png");
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .homeContainer {
   text-align: center;
   padding: 20px;
-}
-
-.title {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-h1 {
-  margin: 0;
-}
-
-.reloadButton {
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.filterContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  background-color: white;
-}
-
-
-.selectContainer {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.filterLabel {
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-.filterSelect {
-  padding: 5px;
-  font-size: 14px;
-  border-radius: 4px;
 }
 
 .dogsContainer {
@@ -66,115 +20,95 @@ h1 {
   margin-bottom: 20px;
 }
 
-.link {
-  text-decoration: none;
-  color: #000;
+.titleContainer {
+  background-color: #ffffff;
+  opacity: 0.9;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 10px #0000001a;
 }
 
-.dogCard:hover {
-  transform: translateY(-5px);
-  transition: transform 0.3s ease-in-out;
+.title {
+  font-size: 48px;
+  color: #333;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #0000001a;
 }
 
-.content {
-  margin-top: 10px;
+h1 {
+  margin: 0;
 }
 
-.temperaments {
-  margin-bottom: 10px;
-  font-size: 16px;
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  opacity: 0.9;
+  box-shadow: 0 2px 6px #0000001a;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
-.info {
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-.imageContainer {
+.filterOption {
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-.image {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
+.filterTitle {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.selectContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.filterLabel {
+  font-size: 16px;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.filterSelect {
+  padding: 5px;
+  font-size: 14px;
   border-radius: 4px;
 }
 
-.formContainer {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 50px;
+.filterSelect:hover {
+  border-color: #007bff;
 }
 
-.form {
-  width: 400px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  margin-left: auto;
+.filterSelect:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px #007bff4d;
 }
 
-.form h1 {
-  font-size: 24px;
+.reloadButton {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
   margin-bottom: 20px;
 }
 
-.form label {
-  font-weight: bold;
-}
-
-.form input,
-.form select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-
-.form p.error {
-  color: red;
-  font-size: 14px;
-  margin-top: 4px;
-}
-
-.form select {
-  margin-bottom: 10px;
-}
-
-.form .selectedTemps {
-  margin-top: 8px;
-}
-
-.form .selectedTemp {
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 4px;
-  margin-right: 6px;
-  padding: 4px;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
-}
-
-.form .removeButton {
-  padding: 2px;
-  border: none;
-  background-color: transparent;
-  color: #fff;
-  cursor: pointer;
-}
-
-.form button[type="submit"] {
-  width: 100%;
-  padding: 8px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
+.reloadButton:hover {
+  background-color: #0056b3;
 }

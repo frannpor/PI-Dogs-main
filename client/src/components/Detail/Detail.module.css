@@ -1,11 +1,11 @@
 .contentContainer {
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    margin: 50px auto;
-    width: 50%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  margin: 50px auto;
+  width: 50%;
 }
 
 .titleName {
@@ -39,3 +39,9 @@
   font-size: 18px;
   margin-bottom: 10px;
 }
+
+.detailAll {
+    background-image: url("../../../src/Extras/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

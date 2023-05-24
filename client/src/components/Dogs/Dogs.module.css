@@ -49,3 +49,8 @@
   max-height: 100%;
   border-radius: 8px;
 }
+
+.confirmationMessage {
+  color: green;
+  font-weight: bold;
+}

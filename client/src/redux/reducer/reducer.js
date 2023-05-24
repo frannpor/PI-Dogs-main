@@ -1,4 +1,4 @@
-import { GET_BY_ID, GET_BY_NAME, GET_DOGS, GET_TEMPERAMENTS, POST_DOG, FILTER_BY_TEMPERAMENT, FILTER_BY_WEIGHT, FILTER_BY_HEIGHT, FILTER_BY_ORIGIN, FILTER_BY_NAME, DELETE_DOG_ID } from '../actions/actions-types.js'
+import { GET_BY_ID, GET_BY_NAME, GET_DOGS, GET_TEMPERAMENTS, POST_DOG, FILTER_BY_TEMPERAMENT, FILTER_BY_WEIGHT, FILTER_BY_HEIGHT, FILTER_BY_ORIGIN, FILTER_BY_NAME, DELETE_DOG, DELETE_DOG_ID } from '../actions/actions-types.js'
 
 const initialState = {
     dogs: [],
@@ -124,8 +124,15 @@ const reducer = (state = initialState, { type, payload }) => {
             });
             return {
                 ...state,
-                dogs: sortedDogs
+                dogs: sortedDogs,
             };
+        case DELETE_DOG:
+            const copyOfDogs = state.dogsCopy.filter((dog) => dog.id !== payload)
+            return {
+                ...state,
+                dogs: copyOfDogs,
+                dogsCopy: copyOfDogs,
+            }
         case DELETE_DOG_ID:
             return {
                 ...state,

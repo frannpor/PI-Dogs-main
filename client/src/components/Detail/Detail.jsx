@@ -14,19 +14,20 @@ const Detail = () => {
     setDogId({});
     return dispatch(deleteDogId());
   }, [dispatch, id]);
-  if (!dog) {
-    return <p>Cargando...</p>;
-  }
   return (
+    <div className={style.detailAll}>
       <div className={style.contentContainer}>
-      <h1 className={style.titleName}>{dog.name}</h1>
-      <div className={style.imageContainer}>
-        <img className={style.image} src={dog.image} alt={dog.name} />
+        <h1 className={style.titleName}>{dog.name}</h1>
+        <div className={style.imageContainer}>
+          <img className={style.image} src={dog.image} alt={dog.name} />
+        </div>
+        <p className={style.temperaments}>
+          Temperamento: {dog.temperament ? dog.temperament.join(", ") : ""}
+        </p>
+        <p className={style.info}>Esperanza de vida: {dog.age} years</p>
+        <p className={style.info}>Altura: {dog.height} cm</p>
+        <p className={style.info}>Peso: {dog.weight} kg</p>
       </div>
-        <p className={style.temperaments}>Temperament: {dog.temperament ? dog.temperament.join(", ") : ""}</p>
-        <p className={style.info}>Age: {dog.age} years</p>
-        <p className={style.info}>Height: {dog.height} cm</p>
-        <p className={style.info}>Weight: {dog.weight} kg</p>
     </div>
   );
 };

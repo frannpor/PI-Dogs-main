@@ -1,4 +1,4 @@
-import { GET_BY_ID, GET_DOGS, GET_TEMPERAMENTS, GET_BY_NAME, POST_DOG, FILTER_BY_WEIGHT, FILTER_BY_TEMPERAMENT, FILTER_BY_HEIGHT, FILTER_BY_ORIGIN, FILTER_BY_NAME, DELETE_DOG_ID } from "./actions-types";
+import { GET_BY_ID, GET_DOGS, GET_TEMPERAMENTS, GET_BY_NAME, POST_DOG, FILTER_BY_WEIGHT, FILTER_BY_TEMPERAMENT, FILTER_BY_HEIGHT, FILTER_BY_ORIGIN, FILTER_BY_NAME, DELETE_DOG, DELETE_DOG_ID } from "./actions-types";
 import axios from 'axios'
 
 export const getDogs = () => {
@@ -25,18 +25,16 @@ export const getTemperaments = () => {
 export const getByName = (name) => {
     return async (dispatch) => {
         try {
-            const response = await axios.get(`http://localhost:3001/dogs?name=${name}`)
+            const response = await axios.get(`http://localhost:3001/dogs?name=${name}`);
             if (!response.data.length) {
-                return;
+                throw new Error("Dog not found");
             }
-            if (response.data.length) {
-                dispatch({ type: GET_BY_NAME, payload: response.data })
-            }
+            dispatch({ type: GET_BY_NAME, payload: response.data });
         } catch (error) {
-            error(error.message)
+            throw new Error(error.message);
         }
-    }
-}
+    };
+};
 
 export const getById = (id) => {
     return async (dispatch) => {
@@ -94,7 +92,23 @@ export const FilterByName = (payload) => {
     }
 }
 
-export const deleteDogId = () => {
+export const deleteDog = (id) => async (dispatch) => {
+    try {
+        if (!id) {
+            throw new Error("Invalid ID");
+        }
+        const response = await axios.delete(`http://localhost:3001/dogs/delete/${id}`);
+        dispatch({
+            type: DELETE_DOG,
+            payload: response.data
+        });
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const deleteDogId = () => { //? Actualización de estado para el detalle
     return {
         type: DELETE_DOG_ID,
     }
