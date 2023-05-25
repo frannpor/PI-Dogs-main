@@ -16,10 +16,10 @@ const SearchBar = ({ onSearch }) => {
   const handleSearch = async () => {
   const search = searchName.trim().toLowerCase();
   if (!search) {
-    setError("Please enter a dog name");
+    setError("Por favor ingrese un nombre");
     return;
   } else if (!search.match(/^[a-zA-Z\s]+$/)) {
-    setError("Please enter alphabetic characters");
+    setError("Por favor ingrese valores alfabéticos");
     return;
   }
 
@@ -29,7 +29,7 @@ const SearchBar = ({ onSearch }) => {
       setSearchName("");
     })
     .catch(() => {
-      setError("An error occurred while searching");
+      setError("Ha ocurrido un error en la búsqueda");
     });
 };
 

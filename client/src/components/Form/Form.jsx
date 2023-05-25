@@ -103,6 +103,7 @@ const Form = () => {
                 name="name"
                 onChange={handleChange}
                 className={styles.input}
+                placeholder="Nombre de la raza"
               />
               {errors.name && <p className={styles.error}>{errors.name}</p>}
             </div>
@@ -114,6 +115,7 @@ const Form = () => {
                 name="height"
                 onChange={handleChange}
                 className={styles.input}
+                placeholder="Altura min - altura max"
               />
               {errors.height && <p className={styles.error}>{errors.height}</p>}
             </div>
@@ -125,6 +127,7 @@ const Form = () => {
                 name="weight"
                 onChange={handleChange}
                 className={styles.input}
+                placeholder="Peso min - peso max"
               />
               {errors.weight && <p className={styles.error}>{errors.weight}</p>}
             </div>
@@ -136,6 +139,7 @@ const Form = () => {
                 name="age"
                 onChange={handleChange}
                 className={styles.input}
+                placeholder="Min - max"
               />
               {errors.age && <p className={styles.error}>{errors.age}</p>}
             </div>
@@ -147,6 +151,7 @@ const Form = () => {
                 name="image"
                 onChange={handleChange}
                 className={styles.input}
+                placeholder="http://example.com"
               />
               {errors.image && <p className={styles.error}>{errors.image}</p>}
             </div>
