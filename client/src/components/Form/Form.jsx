@@ -62,15 +62,12 @@ const Form = () => {
     ]);
   };
 
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     const validationErrors = validate(input);
 
     if (Object.keys(validationErrors).length === 0) {
       dispatch(postDog(input));
-      setSuccessMessage("Perro creada exitosamente");
       setInput({
         id: "",
         name: "",
@@ -82,11 +79,6 @@ const Form = () => {
         temperament: [],
         temperaments: [],
       });
-    } else if (Object.values(input).some((value) => value === "")) {
-      setErrorMessage("Falta información para crear el perro");
-    } else {
-      setErrorMessage("Por favor soluciona los siguientes errores:");
-      setErrors(validationErrors);
     }
   };
 
@@ -195,10 +187,6 @@ const Form = () => {
             <button type="submit" className={styles.createButton}>
               Crear
             </button>
-            {successMessage && (
-              <div className={styles.success}>{successMessage}</div>
-            )}
-            {errorMessage && <div className={styles.error}>{errorMessage}</div>}
           </div>
         </form>
       </div>

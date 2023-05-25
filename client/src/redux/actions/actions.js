@@ -52,9 +52,10 @@ export const postDog = (dog) => {
         try {
             const response = await axios.post('http://localhost:3001/dogs', dog);
             dispatch({ type: POST_DOG, payload: response.data });
+            alert("Perro creado correctamente")
             return response;
         } catch (error) {
-            throw new Error(error.response.data);
+            alert(error.message)
         }
     };
 };
