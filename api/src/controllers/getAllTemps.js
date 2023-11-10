@@ -1,5 +1,7 @@
+require('dotenv').config()
 const axios = require("axios");
 const { Temperament } = require("../db");
+const { API_KEY } = process.env;
 
 const getAllTemps = async () => {
     const tempsData = await axios(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
