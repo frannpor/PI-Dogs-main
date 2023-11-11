@@ -18,6 +18,7 @@ const Dogs = ({ id, name, weight, height, image, temperaments, temperament, crea
       setShowConfirmation(true);
       timer = setTimeout(() => {
         setShowConfirmation(false);
+        window.location.reload();
       }, 2000);
     } catch (error) {
       console.error(error);
