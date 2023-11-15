@@ -14,8 +14,8 @@ import {
 } from "./actions-types";
 import axios from "axios";
 
-// const { REACT_APP_URL_HOST } = process.env;
-const REACT_APP_URL_HOST = "http://localhost:3001"
+const { REACT_APP_URL_HOST } = process.env;
+// const REACT_APP_URL_HOST = "http://localhost:3001"
 
 export const getDogs = () => {
   return async (dispatch) => {
@@ -33,7 +33,7 @@ export const getTemperaments = () => {
       const response = await axios.get(`${REACT_APP_URL_HOST}/temps`);
       dispatch({
         type: GET_TEMPERAMENTS,
-        payload: [...response.data?.map((temperament) => temperament.name)],
+        payload: response.data
       });
     } catch (error) {
       error(error.message);

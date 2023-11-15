@@ -28,8 +28,8 @@ const Home = () => {
   };
 
   useEffect(() => {
-    dispatch(getDogs());
-    dispatch(getTemperaments());
+      dispatch(getDogs());
+      dispatch(getTemperaments());
   }, [dispatch]);
 
   const handleClick = (event) => {
@@ -37,7 +37,6 @@ const Home = () => {
     event.preventDefault();
     resetPagination();
     dispatch(getDogs());
-    window.location.reload()
   };
 
   const handleFilterByTemperament = (event) => {
@@ -140,8 +139,8 @@ const Home = () => {
               <option value="">Seleccionar</option>
               <option value="All">Todos los temperamentos</option>
               {tempState?.sort().map((temp) => (
-                <option key={temp} value={temp}>
-                  {temp}
+                <option key={temp.id} value={temp.name}>
+                  {temp.name}
                 </option>
               ))}
             </select>
@@ -155,7 +154,7 @@ const Home = () => {
         className={styles.reloadButton}
         onClick={(event) => handleClick(event)}
       >
-        Cargar perros de nuevo
+        Eliminar filtros
       </button>
       <div className={styles.dogsContainer}>
         {currentDogs?.map((dog) => (

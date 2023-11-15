@@ -1,3 +1,5 @@
+const  { Dog } = require("../db");
+
 const deleteDog = async (id) => {
   if (!id) {
     throw new Error("Dog ID is required");

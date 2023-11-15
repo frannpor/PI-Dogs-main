@@ -28,7 +28,7 @@ const Form = () => {
   const [errors, setErrors] = useState({});
   const [filter] = useState("");
   const filteredTemps = temperaments?.filter((temp) =>
-    temp.toLowerCase().includes(filter.toLowerCase())
+    temp.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   const handleChange = (event) => {
@@ -47,18 +47,19 @@ const Form = () => {
   };
 
   const handleSelect = (event) => {
-    //? Selección de temperamentos para que se mantengan los seleccionados
+     //? Selección de temperamentos para que se mantengan los seleccionados
     const selectedTemperament = event.target.value;
+    const selectedTempObject = temperaments.find(
+      (temp) => temp.name === selectedTemperament
+    );
     setInput((prevInput) => ({
       ...prevInput,
       temperament: [...prevInput.temperament, selectedTemperament],
-      temperaments: Array.isArray(prevInput.temperaments)
-        ? [...prevInput.temperaments, selectedTemperament]
-        : [selectedTemperament],
+      temperaments: [...prevInput.temperaments, selectedTempObject],
     }));
     setSelectedTemps((prevSelectedTemperaments) => [
       ...prevSelectedTemperaments,
-      selectedTemperament,
+      selectedTempObject,
     ]);
   };
 
@@ -67,7 +68,11 @@ const Form = () => {
     const validationErrors = validate(input);
 
     if (Object.keys(validationErrors).length === 0) {
-      dispatch(postDog(input));
+      const dog = {
+        ...input,
+        temperaments: input.temperaments.map((temp) => temp.name),
+      };
+      dispatch(postDog(dog));
       setInput({
         id: "",
         name: "",
@@ -79,6 +84,7 @@ const Form = () => {
         temperament: [],
         temperaments: [],
       });
+      setSelectedTemps([]);
     }
   };
 
@@ -168,16 +174,16 @@ const Form = () => {
                 className={styles.select}
               >
                 <option value="">Seleccionar</option>
-                {filteredTemps?.sort().map((temp) => (
-                  <option key={temp} value={temp}>
-                    {temp}
+                {filteredTemps?.map((temp) => (
+                  <option key={temp.id} value={temp.name}>
+                    {temp.name}
                   </option>
                 ))}
               </select>
               <div className={styles.selectedTemps}>
                 {selectedTemps?.sort().map((temp) => (
-                  <div key={temp?.id} className={styles.selectedTemp}>
-                    <span>{temp}</span>
+                  <div key={temp.id} className={styles.selectedTemp}>
+                    <span>{temp.name}</span>
                     <button
                       type="button"
                       onClick={() => handleRemove(temp)}
