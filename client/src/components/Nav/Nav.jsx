@@ -1,13 +1,8 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./Nav.module.css";
 
 const Nav = () => {
-  const history = useHistory();
-  const handleRedirect = () => {
-    history.push("/home");
-    window.location.reload()
-  };
   return (
     <nav className={styles.nav}>
       <div>
@@ -15,7 +10,7 @@ const Nav = () => {
           <button className={styles.link}>Landing</button>
         </Link>
         <Link to="/home">
-          <button className={styles.link} onClick={handleRedirect}>
+          <button className={styles.link}>
             Home
           </button>
         </Link>
