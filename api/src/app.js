@@ -23,7 +23,7 @@ server.use((req, res, next) => {
   next();
 });
 server.use(cors({
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'https://dogs-pern-stack.onrender.com'],
   credentials: true,
 }));
 
